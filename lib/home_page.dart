@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_online_store_restapi_simple/bloc/product_bloc.dart';
 import 'package:flutter_online_store_restapi_simple/data.dart';
 import 'package:flutter_online_store_restapi_simple/item_widget.dart';
 
@@ -23,7 +25,7 @@ class _HomePageState extends State<HomePage> {
           color: Colors.black,
         ),
         title: const Text(
-          'Toko Buah & Sayur',
+          'Platzi Fake Store',
           style: TextStyle(color: Colors.black),
         ),
         actions: [
@@ -71,17 +73,33 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Container(
         padding: const EdgeInsets.all(10),
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-            crossAxisCount: 2,
-            childAspectRatio: 0.6,
-          ),
-          itemBuilder: (context, index) {
-            return ItemWidget(product: allData[index]);
+        child: BlocBuilder<ProductBloc, ProductState>(
+          builder: (context, state) {
+            if (state is ProductLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
+            if (state is ProductSuccess) {
+              return GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.6,
+                ),
+                itemBuilder: (context, index) {
+                  return ItemWidget(product: state.products[index]);
+                },
+                itemCount: state.products.length,
+              );
+            }
+
+            return const Center(
+              child: Text("No data loaded"),
+            );
           },
-          itemCount: allData.length,
         ),
       ),
     );

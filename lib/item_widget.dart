@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_online_store_restapi_simple/data.dart';
+import 'package:flutter_online_store_restapi_simple/models/product.dart';
+// import 'package:flutter_online_store_restapi_simple/data.dart';
 import 'package:flutter_online_store_restapi_simple/product_detail.dart';
 
 class ItemWidget extends StatelessWidget {
@@ -30,17 +31,17 @@ class ItemWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Hero(
-              tag: product.image,
+              tag: product.images[0],
               child: SizedBox(
                 width: 150,
-                child: Image.asset(product.image),
+                child: Image.network(product.images[0]),
               ),
             ),
             const SizedBox(
               height: 6,
             ),
             Text(
-              'Rp ${product.price}',
+              'USD ${product.price}',
               style: const TextStyle(
                 color: Colors.green,
                 fontSize: 20,
@@ -51,7 +52,7 @@ class ItemWidget extends StatelessWidget {
               height: 2,
             ),
             Text(
-              product.name,
+              product.title,
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
@@ -59,13 +60,6 @@ class ItemWidget extends StatelessWidget {
             ),
             const SizedBox(
               height: 2,
-            ),
-            Text(
-              product.quantity,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w300,
-              ),
             ),
             const SizedBox(
               height: 4,
