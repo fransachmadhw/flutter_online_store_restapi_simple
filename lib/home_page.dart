@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_online_store_restapi_simple/account_page.dart';
 import 'package:flutter_online_store_restapi_simple/bloc/product_bloc.dart';
 import 'package:flutter_online_store_restapi_simple/data.dart';
 import 'package:flutter_online_store_restapi_simple/item_widget.dart';
@@ -20,9 +21,16 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
-        leading: const Icon(
-          Icons.menu,
-          color: Colors.black,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return const AccountPage();
+            }));
+          },
+          icon: const Icon(
+            Icons.account_circle,
+            color: Colors.black,
+          ),
         ),
         title: const Text(
           'Platzi Fake Store',

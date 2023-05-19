@@ -51,11 +51,15 @@ class ItemWidget extends StatelessWidget {
             const SizedBox(
               height: 2,
             ),
-            Text(
-              product.title,
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              child: Text(
+                product.title,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
             const SizedBox(
@@ -85,7 +89,7 @@ class ItemWidget extends StatelessWidget {
                       width: 2,
                     ),
                     Text(
-                      "Beli",
+                      "Buy",
                       style: TextStyle(
                         color: Colors.green,
                         fontSize: 16,

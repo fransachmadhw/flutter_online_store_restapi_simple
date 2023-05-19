@@ -61,11 +61,14 @@ class _ProductDetailState extends State<ProductDetail> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            widget.product.title,
-            style: const TextStyle(
-              fontSize: 50,
-              fontWeight: FontWeight.w700,
+          Padding(
+            padding: EdgeInsets.all(12),
+            child: Text(
+              widget.product.title,
+              style: const TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ),
           Center(

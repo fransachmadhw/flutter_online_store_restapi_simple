@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_online_store_restapi_simple/bloc/product_bloc.dart';
-import 'package:flutter_online_store_restapi_simple/home_page.dart';
+import 'package:flutter_online_store_restapi_simple/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: HomePage(),
+        home: const LoginPage(),
       ),
     );
   }
